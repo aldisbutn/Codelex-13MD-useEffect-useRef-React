@@ -1,0 +1,40 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.app {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+  gap: 15px;
+}
+
+.firstPage,
+.secondPage,
+.thirdPage {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 227, 194);
+  width: 500px;
+  height: 400px;
+  padding: 25px;
+  gap: 10px;
+  border-radius: 15px;
+}
+
+.input {
+  padding: 5px;
+}
+
+.button {
+  padding: 5px;
+}
+
+.select {
+  padding: 5px;
+}

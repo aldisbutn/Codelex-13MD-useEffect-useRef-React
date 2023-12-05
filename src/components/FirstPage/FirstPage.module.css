@@ -1,0 +1,11 @@
+.coloredSquares {
+  display: flex;
+}
+
+.formWrapper {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  align-items: center;
+  height: 100px;
+}
