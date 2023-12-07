@@ -7,16 +7,16 @@ export const SecondPage = () => {
   const [buttonCountTwo, setButtonCountTwo] = useState(0);
   const [fontSizeCount, setFontSizeCount] = useState(1.17);
 
-  // Log when something in the page re-renders
-  useEffect(() => {
-    console.log('Render');
-  }, [buttonCount, formInputValue, formInputValueTwo, buttonCountTwo, fontSizeCount]);
-
   // Log when the page first renders and set the count to 100
   useEffect(() => {
     console.log('first render');
     setButtonCountTwo(100);
   }, []);
+
+  // Log when something in the page re-renders
+  useEffect(() => {
+    console.log('Render');
+  }, [buttonCount, formInputValue, formInputValueTwo, buttonCountTwo, fontSizeCount]);
 
   // When button is pressed set count and log that the count is changing
   const addCountAndConsoleLog = () => {
