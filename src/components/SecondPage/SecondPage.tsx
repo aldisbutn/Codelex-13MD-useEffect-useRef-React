@@ -7,34 +7,40 @@ export const SecondPage = () => {
   const [buttonCountTwo, setButtonCountTwo] = useState(0);
   const [fontSizeCount, setFontSizeCount] = useState(1.17);
 
+  // Log when something in the page re-renders
   useEffect(() => {
     console.log('Render');
-  }, [buttonCount, formInputValue, formInputValueTwo, buttonCountTwo]);
+  }, [buttonCount, formInputValue, formInputValueTwo, buttonCountTwo, fontSizeCount]);
 
+  // Log when the page first renders and set the count to 100
   useEffect(() => {
     console.log('first render');
     setButtonCountTwo(100);
   }, []);
 
+  // When button is pressed set count and log that the count is changing
   const addCountAndConsoleLog = () => {
     setButtonCount(buttonCount + 1);
     console.log('changing count');
   };
 
-  const changeTextAndConsoleLog = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newInputValue = event.target.value;
+  // Set input value and log that the input is changing
+  const changeTextAndConsoleLog = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newInputValue = e.target.value;
     setFormInputValue(newInputValue);
     console.log('input change');
   };
 
+  // When button is pressed set count and increase the font size
   const addCountAndIncreaseSize = () => {
     setButtonCountTwo(buttonCountTwo + 1);
     setFontSizeCount(fontSizeCount + 0.1);
     console.log('changing count');
   };
 
-  const changeTextAndChangeTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newInputValue = event.target.value;
+  // Get the input value from the second form and change the page title to it
+  const changeTextAndChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newInputValue = e.target.value;
     setFormInputValueTwo(newInputValue);
     document.title = newInputValue;
   };
@@ -61,7 +67,7 @@ export const SecondPage = () => {
       </button>
       <h3
         style={{
-          fontSize: `${fontSizeCount}rem`, // Use backticks for template literals
+          fontSize: `${fontSizeCount}rem`,
         }}
       >
         Count: {buttonCountTwo}

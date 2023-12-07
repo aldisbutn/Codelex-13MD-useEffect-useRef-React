@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import Style from './FirstPage.module.css';
 
 export const FirstPage = () => {
-  const [formInput, setFormInput] = useState<string[]>([]);
+  const [formInputDisplay, setFormInputDisplay] = useState('');
   const [formInputValue, setFormInputValue] = useState('');
   const [disabledButton, setDisabledButton] = useState(true);
   const [buttonCount, setButtonCount] = useState(0);
@@ -14,6 +14,7 @@ export const FirstPage = () => {
 
   const setDisabledToFalse = () => setDisabledButton(false);
 
+  // On the first render focus on the input and disable the button for 5 seconds
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
@@ -21,25 +22,22 @@ export const FirstPage = () => {
     setInterval(setDisabledToFalse, 5000);
   }, []);
 
+  // Get the input from the form and set form display
   const showFormInput = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const newInput = [...formInput, formInputValue];
-    setFormInput(newInput);
+    setFormInputDisplay(formInputValue);
     setFormInputValue('');
   };
 
+  // Add a colored square to the array
   const addColoredSquare = () => {
     if (colorValue) {
       const newSquare = {
         color: colorValue,
-        id: Date.now(),
+        id: coloredSquares.length,
       };
       setColoredSquares((prevSquares) => [...prevSquares, newSquare]);
     }
-  };
-
-  const handleColorChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setColorValue(e.target.value);
   };
 
   return (
@@ -59,7 +57,7 @@ export const FirstPage = () => {
           />
           <button className='button'>Submit</button>
         </form>
-        <h3>{formInput}</h3>
+        <h3>{formInputDisplay}</h3>
       </div>
 
       <button disabled={disabledButton} ref={disabledButtonRef} className='button'>
@@ -77,7 +75,7 @@ export const FirstPage = () => {
         <button onClick={() => addColoredSquare()} className='button'>
           +
         </button>
-        <select name='colors' onChange={handleColorChange} value={colorValue} className='select'>
+        <select name='colors' onChange={(e) => setColorValue(e.target.value)} value={colorValue} className='select'>
           <option value='red'>Red</option>
           <option value='green'>Green</option>
           <option value='blue'>Blue</option>
