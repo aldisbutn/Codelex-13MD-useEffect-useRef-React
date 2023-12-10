@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import Style from './ThirdPage.module.css';
 
 export const ThirdPage = () => {
   const goldSquareRef = useRef<HTMLDivElement>(null);
@@ -23,50 +24,26 @@ export const ThirdPage = () => {
   // Change the position of the square and add text to it
   const sendToCornerAndAddText = () => {
     if (cornerSquareRef.current) {
-      cornerSquareRef.current.style.position = 'absolute';
-      cornerSquareRef.current.style.right = '0';
+      cornerSquareRef.current.classList.add(Style.cornerSquare);
       cornerSquareRef.current.textContent = 'esmu sturi';
     }
   };
 
   return (
     <>
-      <div
-        ref={goldSquareRef}
-        style={{
-          width: '50px',
-          height: '50px',
-          backgroundColor: 'red',
-          margin: '5px',
-        }}
-      ></div>
+      <div ref={goldSquareRef} className={Style.redSquare}></div>
       <button onClick={changeColorToGold} className='button'>
         Change color
       </button>
 
       <div className='clonedSquares' ref={clonedSquareRef}>
-        <div
-          style={{
-            width: '50px',
-            height: '50px',
-            backgroundColor: 'red',
-            margin: '5px',
-          }}
-        ></div>
+        <div className={Style.redSquare}></div>
       </div>
       <button onClick={cloneSquare} className='button'>
         Clone square
       </button>
 
-      <div
-        ref={cornerSquareRef}
-        style={{
-          width: '50px',
-          height: '50px',
-          backgroundColor: 'red',
-          margin: '5px',
-        }}
-      ></div>
+      <div ref={cornerSquareRef} className={Style.redSquare}></div>
       <button onClick={sendToCornerAndAddText} className='button'>
         Send to corner
       </button>
